@@ -8,6 +8,8 @@ Custom prompt for dark theme
 * Shows if git repo is dirty
 * Shows if the last command is success/failure
 
+![Example Prompt](/example.png)
+
 # Installation in .oh-my-zsh/custom
 
 ```sh
