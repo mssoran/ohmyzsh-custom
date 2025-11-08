@@ -18,7 +18,7 @@ function kube_ps1call {
     # if kube-ps1 plugin is installed, then kube_ps1 call should succed
     # and we use it. Otherwise do not return anything
     
-    if command -v kube_ps1 >/dev/null 2>&1; then
+    if command -v kubectl && command -v kube_ps1 >/dev/null 2>&1; then
         echo $(kube_ps1)
     else
         echo

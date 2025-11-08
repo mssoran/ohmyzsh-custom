@@ -61,4 +61,39 @@ git clone https://github.com/zsh-users/zsh-syntax-highlighting.git plugins/zsh-s
 
 ```
 
+# Another approach with submodules
+
+I don't want to have another dir (.ohmyzsh-customNew) and links. An alternative is using [Git Submodules](https://git-scm.com/book/en/v2/Git-Tools-Submodules)
+
+## Creating the submodules:
+- Go to .ohmyzsh-custom/plugins
+- Create submodule:
+```
+git submodule add --depth 1 https://github.com/zsh-users/zsh-autosuggestions
+git commit -am 'Add zsh-autosuggestions plugin submodule'
+```
+- Similarly other submodules:
+```
+git submodule add --depth 1 https://github.com/zsh-users/zsh-syntax-highlighting
+git submodule add --depth 1 https://github.com/marlonrichert/zsh-autocomplete
+git commit -am 'Add zsh-syntax-highlighting and zsh-autocomplete plugin submodules'
+```
+- Install fzf for fzf plugin:
+```
+    brew install fzf
+```
+
+
+## Cloning with submodules
+I didn't do it yet, but here is some notes to use when I do it the first time. Then, I
+can update this part with the instructions:
+- If you want to clone submodules shallowly, also pass --shallow-submodules. I may need to 
+pass this during clone
+- look at https://git-scm.com/book/en/v2/Git-Tools-Submodules
+- I think here is what is needed:
+    - git clone --recurse-submodules https://github.com/mssoran/ohmyzsh-custom.git ~/.ohmyzsh-custom
+    - in fact, if you do only `git clone`, submodule dirs come empty. You need to `git submodule init` and `git submodule update` in each submodule dir. Alternatively, you can `git submodule update --init --recursive` to init and update all submodules at once.
+
+## Updating submodules
+My understanding is that, you need to go into each submodule, `git pull` them, then `git commit` your main repo. 
 
